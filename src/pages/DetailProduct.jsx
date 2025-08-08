@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import Loading from "../assets/animation/Loading1.webm";
 import Breadcrums from "../components/Breadcrums";
 import { IoCartOutline } from "react-icons/io5";
+import { useCart } from "../context/CartContext";
 
 const DetailProduct = () => {
   const params = useParams();
   const [productDetails, SetProductDetails] = React.useState("");
+  const { addToCart } = useCart();
 
   const getProductDetails = async () => {
     try {
@@ -82,7 +84,10 @@ const DetailProduct = () => {
 
               {/* button proceed */}
               <div className="flex gap-4 mt-4 ">
-                <button className="px-6 flex gap-2 py-2 text-lg bg-red-500 text-white rounded-md">
+                <button
+                  onClick={() => addToCart(productDetails)}
+                  className="px-6 flex gap-2 py-2 text-lg bg-red-500 text-white rounded-md"
+                >
                   <IoCartOutline className="w-6 h-6" />
                   Add to Cart
                 </button>
