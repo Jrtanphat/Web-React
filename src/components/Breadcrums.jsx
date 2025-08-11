@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Breadcrums = ({ title }) => {
+const Breadcrums = ({ title, category }) => {
   const navigate = useNavigate();
   return (
     <div className="max-w-6xl mx-auto my-10">
@@ -12,8 +12,19 @@ const Breadcrums = ({ title }) => {
         /{" "}
         <span className="cursor-pointer" onClick={() => navigate("/products")}>
           Products
-        </span>{" "}
-        /<span>{title}</span>
+        </span>
+        {category && (
+          <>
+            /{" "}
+            <span
+              className="cursor-pointer"
+              onClick={() => navigate(`/category/${category?.toLowerCase()}`)}
+            >
+              {category}
+            </span>
+          </>
+        )}
+        / <span>{title}</span>
       </h1>
     </div>
   );

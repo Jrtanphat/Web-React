@@ -35,8 +35,12 @@ const DetailProduct = () => {
     <>
       {productDetails ? (
         <div className="px-4 pb-4 md:px-0">
-          <Breadcrums title={productDetails.title} />
-          <div className="max-w-6xl mx-auto md:p-6 grid grid-cols-2 gap-10 ">
+          <Breadcrums
+            title={productDetails.title}
+            category={productDetails.category}
+          />
+
+          <div className="max-w-6xl mx-auto md:p-6 grid grid-cols-1 md:grid-cols-2 gap-10 ">
             <div className="w-full">
               <img
                 src={productDetails.image}
@@ -46,7 +50,7 @@ const DetailProduct = () => {
             </div>
             {/* product category */}
             <div className="flex flex-col gap-6 ">
-              <h1 className="md:text-3xl font-bold text-gray-800">
+              <h1 className="md:text-3xl texl-xl font-bold text-gray-800">
                 {productDetails.title}
               </h1>
               <div className="text-gray-700 cursor-pointer">

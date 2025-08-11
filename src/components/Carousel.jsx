@@ -87,12 +87,12 @@ const Carousel = () => {
               key={index}
               className="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] -z-10"
             >
-              <div className="flex gap-10 justify-center h-[600px] items-center px-4">
-                <div className="space-y-6">
+              <div className="flex flex-col md:flex-row gap-10 justify-center h-[600px] items-center px-4 my-20 md:my-0">
+                <div className="md:space-y-6 space-y-3">
                   <h3 className="text-red-500 font-semibold font-sans text-sm">
                     Powering Your World with the Best in Electronics
                   </h3>
-                  <h1 className="text-4xl font-bold uppercase line-clamp-3 w-[500px] text-white">
+                  <h1 className="md:text-4xl text-xl font-bold uppercase text-white line-clamp-3 max-w-full md:max-w-[500px] px-2">
                     {item.title}
                   </h1>
                   <p className="md:w-[500px] line-clamp-3 text-gray-400 pr-7">

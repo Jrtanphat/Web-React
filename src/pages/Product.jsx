@@ -6,6 +6,7 @@ import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
 import Lottie from "lottie-react";
 import notfound from "../assets/animation/No-Data.json";
+import MobileFilter from "../components/MobileFilter";
 
 const Product = () => {
   const { data, fetchAllProducts } = getData();
@@ -14,6 +15,7 @@ const Product = () => {
   const [brand, setBrand] = React.useState("All");
   const [priceRange, setPriceRange] = React.useState([0, 5000]);
   const [page, setPage] = React.useState(1);
+  const [openFilter, setOpenFilter] = React.useState(false);
 
   useEffect(() => {
     fetchAllProducts();
@@ -23,15 +25,18 @@ const Product = () => {
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
     setPage(1); // Reset page to 1 when category changes
+    setOpenFilter(false); // Close filter on category change
   };
 
   const handleBrandChange = (e) => {
     setBrand(e.target.value);
     setPage(1); // Reset page to 1 when category changes
+    setOpenFilter(false); // Close filter on brand change
   };
 
   const pageHandler = (selectedPage) => {
     setPage(selectedPage);
+    window.scrollTo(0, 0); // Scroll to top on page change
   };
 
   const filteredData = data?.filter(
@@ -48,6 +53,20 @@ const Product = () => {
   return (
     <div>
       <div className="max-w-6xl mx-auto px-4 mb-10">
+        <MobileFilter
+          openFilter={openFilter}
+          setOpenFilter={setOpenFilter}
+          search={search}
+          setSearch={setSearch}
+          brand={brand}
+          setBrand={setBrand}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          category={category}
+          setCategory={setCategory}
+          handleCategoryChange={handleCategoryChange}
+          handleBrandChange={handleBrandChange}
+        />
         {data?.length > 0 ? (
           <>
             <div className="flex gap-8">
@@ -66,7 +85,7 @@ const Product = () => {
 
               {filteredData?.length > 0 ? (
                 <div className="flex flex-col justify-center items-center">
-                  <div className="grid grid-cols-4 gap-7 mt-10 ">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-7 mt-10 ">
                     {filteredData
                       ?.slice(page * 8 - 8, page * 8)
                       .map((product, index) => {
