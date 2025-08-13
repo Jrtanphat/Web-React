@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.37.0",
+    "@emoji-mart/data": "^1.2.1",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/vite": "^4.1.11",
     "axios": "^1.11.0",
+    "emoji-picker-react": "^4.13.2",
+    "framer-motion": "^12.23.12",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.526.0",
     "react": "^19.1.0",

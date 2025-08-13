@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import DetailProduct from "./pages/DetailProduct";
 import CategoryProduct from "./pages/CategoryProduct";
+import ChatbotToggle from "./components/ChatbotToggle";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />}></Route>
       </Routes>
       <Footer />
+      <ChatbotToggle />
     </BrowserRouter>
   );
 };
